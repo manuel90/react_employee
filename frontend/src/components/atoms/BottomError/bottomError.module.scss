@@ -1,0 +1,31 @@
+
+.wrapError {
+	text-align: center;
+	cursor: pointer;
+	position: fixed;
+	bottom: 35px;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid var(--bs-danger);
+	color: var(--bs-danger);
+	border-radius: 20px;
+	padding: 10px 15px;
+	max-width: 380px;
+	position: relative;
+	width: 100%;
+	z-index: 3;
+	&::after {
+		content: "x";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 20px;
+    line-height: 1;
+    border: 1px solid var(--bs-danger);
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    background-color: var(--bs-danger);
+		color: var(--bs-white)
+	}
+}

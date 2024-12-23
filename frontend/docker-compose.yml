@@ -1,0 +1,15 @@
+version: '3'
+
+name: reactexpress_frontend
+
+services:
+  nextjs:
+    container_name: reactexpress_nextjs
+    build:
+      context: .
+      args:
+        - NODE_VERSION=22.11.0
+    volumes:
+      - '.:/home/app'
+    ports:
+      - "8000:3000"

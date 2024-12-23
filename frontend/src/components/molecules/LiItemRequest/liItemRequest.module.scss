@@ -1,0 +1,21 @@
+.wrapLi {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	list-style-type: none;
+	margin: 0;
+	padding: 10px 15px;
+	margin: 5px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	&.showed {
+		display: block;
+	}
+	.wrapButton {
+		display: table;
+		margin-left: auto;
+		button + button {
+			margin-left: 5px;
+		}
+	}
+}

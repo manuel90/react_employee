@@ -1,0 +1,12 @@
+
+.wrapPagination {
+	padding: 0;
+	margin: 15px 0;
+	display: flex;
+	text-align: left;
+	justify-content: space-between;
+	label {
+		font-weight: bold;
+		margin-right: 10px;
+	}
+}

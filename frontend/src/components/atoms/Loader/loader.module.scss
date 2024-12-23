@@ -1,0 +1,43 @@
+.wrapLoader {
+	background-color: rgba(255,255,255,0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	
+	.loader {
+		aspect-ratio: 1;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		width: 65px;
+		
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 50px;
+			box-shadow: 0 0 0 3px inset var(--bs-danger);
+			animation: myLoader5 2.5s infinite;
+		}
+		&::after {
+			animation-delay: -1.25s;
+			border-radius: 0;
+		}
+		
+	}
+}
+@keyframes myLoader5 {
+  0%    {inset:0    35px 35px 0   }
+  12.5% {inset:0    35px 0    0   }
+  25%   {inset:35px 35px 0    0   }
+  37.5% {inset:35px 0    0    0   }
+  50%   {inset:35px 0    0    35px}
+  62.5% {inset:0    0    0    35px}
+  75%   {inset:0    0    35px 35px}
+  87.5% {inset:0    0    35px 0   }
+  100%  {inset:0    35px 35px 0   }
+}

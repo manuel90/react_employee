@@ -1,0 +1,52 @@
+version: '3'
+
+name: reactexpress_backend
+
+services:
+  nextjs:
+    container_name: reactexpress_express
+    build:
+      context: .
+      args:
+        - NODE_VERSION=22.11.0
+    volumes:
+      - '.:/home/app'
+    ports:
+      - "8001:3000"
+    networks:
+      - reactexpress_backend_net
+    depends_on:
+      - db
+  db:
+    image: postgres:16-alpine
+    container_name: reactexpress_db
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: reactexpress_db_demo
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - reactexpress_backend_net
+  adminer:
+    image: adminer:latest
+    container_name: reactexpress_adminer
+    environment:
+      - ADMINER_DEFAULT_SERVER=reactexpress_db
+    ports:
+      - "8002:8080"
+    networks:
+      - reactexpress_backend_net
+    depends_on:
+      - db
+
+networks:
+  reactexpress_backend_net:
+    name: reactexpress_backend_net_name
+    driver: bridge
+    
+volumes:
+  postgres_data:
+    name: reactexpress_vol_db

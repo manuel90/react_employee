@@ -1,0 +1,7 @@
+
+@mixin bgImage($size: cover, $position: center top, $repeat: no-repeat, $color: transparent) {
+	background-color: $color;
+	background-position: $position;
+	background-repeat: $repeat;
+	background-size: $size;
+}
