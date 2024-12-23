@@ -70,7 +70,7 @@ export default function CreateRequestForm({ className }) {
 			const resultJson = await response.json()
 			
 			if(response.status !== 200) {
-				throw new Error(resultJson.message ? userResult.message : "something went wrong.")	
+				throw new Error(resultJson.message ? resultJson.message : "something went wrong.")	
 			}
 			
 			setIsLoading(false)
@@ -84,25 +84,32 @@ export default function CreateRequestForm({ className }) {
 	
 	useEffect(() => {
 		if(code.trim()) {
-			setIsCodeValid(code.trim().length > 0)
+			const trimmedCode = code.trim()
+			setIsCodeValid(trimmedCode.length > 0 && trimmedCode.length <= 50)
 		}
 	}, [code])
 	
 	useEffect(() => {
 		if(description.trim()) {
-			setIsDescriptionValid(description.trim().length > 0)
+			const trimmedDesc = description.trim()
+			setIsDescriptionValid(trimmedDesc.length > 0 && trimmedDesc.length <= 50)
 		}
 	}, [description])
 	
 	useEffect(() => {
 		if(summary.trim()) {
-			setIsSummaryValid(summary.trim().length > 0)
+			const trimmedSummary = summary.trim()
+			setIsSummaryValid(trimmedSummary.length > 0 && trimmedSummary.length <= 50)
 		}
 	}, [summary])
 	
 	//This hook is used to enable/disable the form's button.
 	useEffect(() => {
-		setIsFormValid(code.trim().length > 0 && description.trim().length > 0 && summary.trim().length > 0)
+		const trimmedSummary = summary.trim()
+		const trimmedDesc = description.trim()
+		const trimmedCode = code.trim()
+		
+		setIsFormValid(trimmedCode.length > 0 && trimmedCode.length <= 50 && trimmedDesc.length > 0 && trimmedDesc.length <= 50 && trimmedSummary.length > 0 && trimmedSummary.length <= 50)
 	}, [code, description, summary])
 	
 	if(!canUser(currentUser, 'create')) {
@@ -128,12 +135,13 @@ export default function CreateRequestForm({ className }) {
 						value={code}
 						onChange={(e) => setCode(e.target.value)} 
 						onBlur={() => {
-							setIsCodeValid(code.trim().length !== 0)
+							const trimmedCode = code.trim()
+							setIsCodeValid(trimmedCode.length > 0 && trimmedCode.length <= 50)
 						}}
 					/>
 					{
 						!isCodeValid && (
-						<p className="mt-2 text-danger">Code required.</p>
+						<p className="mt-2 text-danger">Code required. Max 50 chars.</p>
 						)
 					}
 				</div>
@@ -149,12 +157,13 @@ export default function CreateRequestForm({ className }) {
 						value={description}
 						onChange={(e) => setDescription(e.target.value)} 
 						onBlur={() => {
-							setIsDescriptionValid(description.trim().length !== 0)
+							const trimmedDesc = description.trim()
+							setIsDescriptionValid(trimmedDesc.length > 0 && trimmedDesc.length <= 50)
 						}}
 					/>
 					{
 						!isDescriptionValid && (
-						<p className="mt-2 text-danger">Description required.</p>
+						<p className="mt-2 text-danger">Description required. Max 50 chars.</p>
 						)
 					}
 				</div>
@@ -170,12 +179,13 @@ export default function CreateRequestForm({ className }) {
 						value={summary}
 						onChange={(e) => setSummary(e.target.value)} 
 						onBlur={() => {
-							setIsSummaryValid(summary.trim().length >= 4)
+							const trimmedSummary = summary.trim()
+							setIsSummaryValid(trimmedSummary.length >= 4 && trimmedSummary.length <= 50)
 						}}
 					/>
 					{
 						!isSummaryValid && (
-						<p className="mt-2 text-danger">Summary required.</p>
+						<p className="mt-2 text-danger">Summary required. Max 50 chars.</p>
 						)
 					}
 				</div>

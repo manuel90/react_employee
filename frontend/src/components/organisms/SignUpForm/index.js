@@ -113,12 +113,13 @@ export default function SignUpForm({ className }) {
 	
 	useEffect(() => {
 		if(name.trim()) {
-			setIsNameValid(name.trim().length > 0)
+			const trimmedName = name.trim()
+			setIsNameValid(trimmedName.length > 0 && trimmedName.length <= 50)
 		}
 	}, [name])
 	
 	useEffect(() => {
-		setIsEmailValid(regexEmail.test(email))
+		setIsEmailValid(regexEmail.test(email) && email.length <= 50)
 	}, [email])
 	
 	useEffect(() => {
@@ -128,7 +129,8 @@ export default function SignUpForm({ className }) {
 	
 	//This hook is used to enable/disable the form's button.
 	useEffect(() => {
-		setIsFormValid(name.trim().length > 0 && regexEmail.test(email) && password.trim().length >= 4 && salary.trim().length > 0 && roleId.trim().length > 0)
+		const trimmedName = name.trim()
+		setIsFormValid(trimmedName.length > 0 && trimmedName.length <= 50 && regexEmail.test(email) && email.length <= 50 && password.trim().length >= 4 && salary.trim().length > 0 && roleId.trim().length > 0)
 	}, [name, email, password, salary, roleId])
 	
 	//Here the roles are loaded.
@@ -150,12 +152,13 @@ export default function SignUpForm({ className }) {
 						value={name}
 						onChange={(e) => setName(e.target.value)} 
 						onBlur={() => {
-							setIsNameValid(name.trim().length !== 0)
+							const trimmedName = name.trim()
+							setIsNameValid(trimmedName.length > 0 && trimmedName.length <= 50)
 						}}
 					/>
 					{
 						!isNameValid && (
-						<p className="mt-2 text-danger">Name required.</p>
+						<p className="mt-2 text-danger">Name required. Max 50 chars.</p>
 						)
 					}
 				</div>
@@ -171,12 +174,12 @@ export default function SignUpForm({ className }) {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)} 
 						onBlur={() => {
-							setIsEmailValid(regexEmail.test(email))
+							setIsEmailValid(regexEmail.test(email) && email.length <= 50)
 						}}
 					/>
 					{
 						!isEmailValid && (
-						<p className="mt-2 text-danger">Email invalid.</p>
+						<p className="mt-2 text-danger">Email invalid. Max 50 chars.</p>
 						)
 					}
 				</div>

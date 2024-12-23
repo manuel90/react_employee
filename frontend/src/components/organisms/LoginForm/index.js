@@ -127,19 +127,22 @@ export default function LoginForm({ className }) {
 
 	useEffect(() => {
 		if(email.trim()) {
-			setIsEmailValid(regexEmail.test(email))
+			setIsEmailValid(regexEmail.test(email) && email.length <= 50)
 		}
 	}, [email])
 	
 	useEffect(() => {
 		if(password.trim()) {
-			setIsPasswordValid(password.trim().length >= 4)
+			const trimmedPwd = password.trim()
+			setIsPasswordValid(trimmedPwd.length >= 4)
 		}
 	}, [password])
 	
 	//This hook is used to enable/disable the form's button.
 	useEffect(() => {
-		setIsFormValid(regexEmail.test(email) && password.trim().length >= 4)
+		const trimmedPwd = password.trim()
+		
+		setIsFormValid(regexEmail.test(email) && email.length <= 50 && trimmedPwd.length >= 4)
 	}, [email, password])
 	
 	useEffect(() => {
@@ -160,12 +163,12 @@ export default function LoginForm({ className }) {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)} 
 						onBlur={() => {
-							setIsEmailValid(regexEmail.test(email))
+							setIsEmailValid(regexEmail.test(email) && email.length <= 50)
 						}}
 					/>
 					{
 						!isEmailValid && (
-							<p data-testid="email-input-error" className="mt-2 text-danger">Email invalid.</p>
+							<p data-testid="email-input-error" className="mt-2 text-danger">Email invalid. Max 50 chars.</p>
 						)
 					}
 				</div>
@@ -181,7 +184,8 @@ export default function LoginForm({ className }) {
 						value={password}
 						onChange={(e) => setPassword(e.target.value)} 
 						onBlur={() => {
-							setIsPasswordValid(password.trim().length >= 4)
+							const trimmedPwd = password.trim()
+							setIsPasswordValid(trimmedPwd.length >= 4)
 						}}
 					/>
 					{
