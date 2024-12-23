@@ -11,6 +11,10 @@ class EmployeeRequestService {
 	 */
 	async createEmployeeRequest(employeeRequestData) {
 		
+		/**
+		 * TODO: Implement validations.
+		 */
+		
 		const myEmployeeRequest = EmployeeRequest.build({
 			code: employeeRequestData.code,
 			description: employeeRequestData.description,

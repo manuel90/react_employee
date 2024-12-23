@@ -31,10 +31,13 @@ app.use('/', routes);
 //Starts server.
 app.listen(port, () => {
   
-  (async () => {
-    await sequelize.sync({ force: false }) // Set to true if you want to recreate tables
-    console.log('Database synced.')
-  })();
+  sequelize.sync({ force: false })
+  .then(() => {
+    console.log('Database synchronized');
+  })
+  .catch((error) => {
+    console.error('Error synchronizing database:', error);
+  });
   
   console.log(`Express app listening on port ${port}`)
 })

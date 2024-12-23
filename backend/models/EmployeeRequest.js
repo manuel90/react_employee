@@ -7,7 +7,7 @@ const sequelize = db.getSequelizeInstance();
 
 const Employee = require('./Employee');
 
-const EmployeeRequest = sequelize.define('Employee', {
+const EmployeeRequest = sequelize.define('Request', {
   id: {
 		type: DataTypes.INTEGER,
 		autoIncrement: true,

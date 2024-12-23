@@ -13,6 +13,10 @@ class EmployeeService {
 	 */
 	async createEmployee(employeeData) {
 		
+		/**
+		 * TODO: Implement validations.
+		 */
+		
 		const myEmployee = Employee.build({
 			name: employeeData.name,
 			email: employeeData.email,
