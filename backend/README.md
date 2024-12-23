@@ -30,3 +30,4 @@ Below It's explain how to import the demo data for this repo using [Adminer](htt
 1. Click on the database <b>reactexpress_db_demo</b>
 1. then, at the right side click on the <b>import</b> link.
 1. Finally, load the <b>[inserts.sql](/backend/data/inserts.sql)</b> file you can find it here: [/backend/data/inserts.sql](/backend/data/inserts.sql)
+1. Now you could enter in [localhost:8000](http://localhost:8000) with these credentials: email: <b>admin1@yopmail.com</b> password: <b>1234</b>
