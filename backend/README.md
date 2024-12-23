@@ -1,10 +1,8 @@
 Backend Express
 ====================
 
-Propac promohub project.
 
-
-## Installation using Docker
+# Installation using Docker
 It's required: 
 
 * [Docker +20](https://www.docker.com/)
@@ -22,7 +20,7 @@ Steps:
 1. Finally, go to [localhost:8001](http://localhost:8001)
 1. Open adminer: [localhost:8002](http://localhost:8002/?pgsql=reactexpress_db) (Credentials: User: <b>dev</b> Password: <b>dev</b> Database: <b>reactexpress_db_demo</b> Server: <b>reactexpress_db</b>)
 
-# Import Demo data ----------
+# Import Demo data
 
 Below It's explain how to import the demo data for this repo using [Adminer](https://www.adminer.org/) but, you can use any other database management.
 
