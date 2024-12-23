@@ -15,10 +15,9 @@ It's required:
 Steps:
 
 1. Ensure port 8000 is not running other service.
-1. `cd {your project folder}`
-1. `sudo docker-compose build --no-cache`
-1. `sudo docker-compose up`
+1. run `cd {your project folder}`
+1. run `sudo docker-compose build --no-cache`
+1. run `sudo docker-compose up`
 1. Finally, go to [localhost:8000](http://localhost:8000)
 
-<b>NOTE:</b> If you need to install the database too, check out the [Database](#markdown-header-database) and []() section of this readme doc.
 
