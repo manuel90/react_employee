@@ -1,8 +1,6 @@
 Frontend React NextJS
 ====================
 
-Propac promohub project.
-
 
 ## Installation using Docker
 It's required: 
